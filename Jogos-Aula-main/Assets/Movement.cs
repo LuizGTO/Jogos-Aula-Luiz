@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     public float velocity = 1f;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,7 +16,15 @@ public class Movement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        this.transform.position += new Vector3(horizontalInput*velocity,0,0);
-        this.transform.position += new Vector3(0,verticalInput*velocity,0);
+        this.transform.position += new Vector3(horizontalInput * velocity, 0, 0);
+        this.transform.position += new Vector3(0, verticalInput * velocity, 0);
+        if (this.transform.position.x > 10)
+        {
+            this.transform.position = new Vector3(10, this.transform.position.y, this.transform.position.z);
+        }
+        else if (this.transform.position.x < -10)
+        {
+            this.transform.position = new Vector3(10, this.transform.position.y, this.transform.position.z)
+        }
     }
 }
