@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LixoScript : MonoBehaviour
+public class LixoSpawnerController : MonoBehaviour
 {
     public float maximumX;
     public float fixedY;
@@ -18,7 +18,7 @@ public class LixoScript : MonoBehaviour
 
     IEnumerator SpawnRoutine(){
         while (points<MaxPoints){
-            instantiate(Lixo, new Vector3(Random.Range(-maximumX, maximumX+1), fixedY, fixedZ), Quatternion.identity);
+            Instantiate(Lixo, new Vector3(Random.Range(-maximumX, maximumX+1), fixedY, fixedZ), Quaternion.identity);
             yield return new WaitForSeconds(timer);
         }
     }
