@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
         }
         else if (this.transform.position.x < -10)
         {
-            this.transform.position = new Vector3(10, this.transform.position.y, this.transform.position.z);
+            this.transform.position = new Vector3(10, this.transform.position.y, this.transform.position.z)
         }
     }
 }
