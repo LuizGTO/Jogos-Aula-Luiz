@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class LixoSpawnerController : MonoBehaviour
 {
-
+    // Start is called before the first frame update
     public float maximumX;
     public float fixedY;
     public float fixedZ;
@@ -13,27 +14,35 @@ public class LixoSpawnerController : MonoBehaviour
     public int MaxPoints;
     public int points = 0;
     public TMP_Text pointsText;
-    // public TPM_Text victoryText;
+    public TMP_Text victoryText;
 
-    void Start()
-    {
-        StartCoroutine(SpawnRoutine());
-        pointsText.text = "Points: 0";
-        // victoryText.game.gameObject.SetActive(false);
-
-    }
     IEnumerator SpawnRoutine()
     {
-        while (points < MaxPoints)
+        while(points<MaxPoints)
         {
-            Instantiate(Lixo, new Vector3(Random.Range(-maximumX, maximumX + 1), fixedY, fixedZ), Quaternion.identity);
+            Instantiate(Lixo, new Vector3(Random.Range(-maximumX, maximumX+1),
+            fixedY, fixedZ),
+            Quaternion.identity);
             yield return new WaitForSeconds(timer);
         }
-        // victoryText.gameObject.SetActive(true);
+        victoryText.gameObject.SetActive(true);
     }
+
     public void AddToPoints(int value)
     {
         points += value;
         pointsText.text = "Points: " + points.ToString();
+    }
+
+    void Start()
+    {
+        StartCoroutine(SpawnRoutine());
+        victoryText.gameObject.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
